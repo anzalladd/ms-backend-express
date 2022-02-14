@@ -1,8 +1,10 @@
 import { Router } from "express";
-import movies from "./movies/routes"
+import auth from "./auth/routes"
+import stock from "./stock/routes";
 
 const router = Router();
-router.use("/movies", movies)
+router.use("/", auth)
+router.use("/stock", stock)
 router.use(function(req:any,res:any,next:any) {
     if (!req.route){
         return res.status(404).json({data: "data not found"})

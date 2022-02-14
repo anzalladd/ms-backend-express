@@ -1,8 +1,12 @@
 const services = [
   {
-    name: "moviesService",
-    service: require("@/services/MoviesService").default
+    name: "authService",
+    service: require("@/services/AuthService").default
   },
+  {
+    name: "stockService",
+    service: require("@/services/StockService").default
+  }
 ];
 
 export default services;

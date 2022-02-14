@@ -5,9 +5,11 @@ import morgan from "morgan";
 import routes from "@/api/routes";
 import { errors } from "celebrate";
 import swaggerUi from "swagger-ui-express";
+import multer from "multer";
 
 export default ({ app }: { app: express.Application }) => {
  
+  app.use(bodyParser.json({ limit: "10mb" }));
   app.use(
     bodyParser.urlencoded({
       limit: "10mb",
@@ -15,12 +17,11 @@ export default ({ app }: { app: express.Application }) => {
       parameterLimit: 50000,
     })
   );
-  
-  
+  const upload = multer();
+  app.use(upload.array(''));
   app.use(errors());
-  app.use(bodyParser.json({ limit: "10mb" }));
   app.use(urlencoded({ extended: false }));
-  app.use(cors({ optionsSuccessStatus: 200 }));
+  app.use(cors({ origin: '*' }));
   // Status
   app.get("/status", (req, res) => {
     res.status(200).end();

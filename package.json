@@ -11,6 +11,7 @@
     "start": "npm run build && npm run serve",
     "serve": "NODE_ENV=production nodemon -r dotenv/config ./build/src/server.js",
     "typeorm": "ts-node -r tsconfig-paths/register ./node_modules/typeorm/cli.js",
+    "migration:generate": "ts-node -r tsconfig-paths/register ./node_modules/typeorm/cli.js migration:generate -n",
     "migration": "ts-node -r tsconfig-paths/register ./node_modules/typeorm/cli.js migration:run",
     "migration:undo": "ts-node -r tsconfig-paths/register ./node_modules/typeorm/cli.js migration:revert"
   },
@@ -29,6 +30,7 @@
     "@types/yamljs": "^0.2.31",
     "agenda": "^3.1.0",
     "argon2": "^0.27.0",
+    "bcryptjs": "^2.4.3",
     "body-parser": "^1.19.0",
     "celebrate": "^13.0.3",
     "compression": "^1.7.4",
@@ -42,6 +44,7 @@
     "moment": "^2.29.1",
     "mongoose": "^5.10.7",
     "morgan": "^1.10.0",
+    "multer": "^1.4.4",
     "pg": "^8.4.0",
     "prom-client": "^13.0.0",
     "querystring": "^0.2.0",
@@ -62,9 +65,11 @@
     "yamljs": "^0.3.0"
   },
   "devDependencies": {
+    "@types/bcryptjs": "^2.4.2",
     "@types/express": "^4.17.8",
     "@types/jest": "^26.0.15",
     "@types/mongoose": "^5.7.36",
+    "@types/multer": "^1.4.7",
     "@types/node": "^14.14.20",
     "@types/supertest": "^2.0.10",
     "jest": "^26.6.3",
